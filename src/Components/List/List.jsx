@@ -1,22 +1,25 @@
 import React, {useState} from "react";
 import { CircularProgress,Grid,Typography,InputLabel,MenuItem,FormControl,Select } from "@material-ui/core";
 
+import PlaceDetails from "../PlaceDetails/PlaceDetails";
 import useStyles from "./style";
 
-const List=() =>{
+
+
+const List=({places}) =>{
     const classes= useStyles();
-    const [type,setType] = useState('Restraunts');
-    const [rating,setRating] = useState('0.0');
+    const [type,setType] = useState("Restaurants");
+    const [rating,setRating] = useState(0.0);
     
     return (
         <div className={classes.container}>
             <Typography variant="h4">
-                Restraunts, Hotels & Attraction Around You    
+            Restaurants, Hotels & Attraction Around You    
             </Typography>
             <FormControl className={classes.formControl}>
                 <InputLabel>Type</InputLabel>
-                <Select value={"type"} onChange={(e) => setType(e.target.value)}>
-                    <MenuItem value="Restraunts">Restraunts</MenuItem>
+                <Select value={type} onChange={(e) => setType(e.target.value)}>
+                    <MenuItem value="Restaurants">Restaurants</MenuItem>
                     <MenuItem value="Hotels">Hotels</MenuItem>
                     <MenuItem value="Attractions">Attractions</MenuItem>
 
@@ -25,7 +28,7 @@ const List=() =>{
             </FormControl>
             <FormControl className={classes.formControl}>
                 <InputLabel>Rating</InputLabel>
-                <Select value={"rating"} onChange={(e) => setRating(e.target.value)}>
+                <Select value={rating} onChange={(e) => setRating(e.target.value)}>
                     <MenuItem value="0">All</MenuItem>
                     <MenuItem value="3">Above 3.0</MenuItem>
                     <MenuItem value="4">Above 4.0</MenuItem>
@@ -34,6 +37,16 @@ const List=() =>{
                 </Select>
 
             </FormControl>
+
+            <Grid container spacing={3} className={classes.list}>
+                {places?.map((place,i) => (
+                    <Grid list key={i} xs={12}>
+                        <PlaceDetails place={place} />
+                    </Grid>
+
+                ))}
+
+            </Grid>
 
         </div>
     )
