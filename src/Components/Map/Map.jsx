@@ -9,7 +9,7 @@ import useStyles from "./style";
 
 
 
-const Map=({setCoordinates,setBounds,coordinates}) =>{
+const Map=({setCoordinates,setBounds,coordinates,places}) =>{
     const classes= useStyles();
     const isMobile = useMediaQuery("(min-width:600px)");
     return (
@@ -29,6 +29,9 @@ const Map=({setCoordinates,setBounds,coordinates}) =>{
                 }}
                 onChildClick={""}
             >
+                {places?.map((place)=>(
+                        
+                ))}
 
             </GoogleMapReact>
            

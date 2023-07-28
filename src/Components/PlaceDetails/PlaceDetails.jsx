@@ -29,6 +29,17 @@ const PlaceDetails=({place}) =>{
                 <Typography variant="subtitle1">Ranking</Typography>
                 <Typography gutterBottom variant="subtitle1">{place.ranking}</Typography>
                 </Box>
+                {place?.address &&(
+                    <Typography gutterBottom variant="subtitle2" color="textseccondary" className={classes.subtitle}>
+                        <LocationOnIcon />{place.address}
+                    </Typography>
+                )}
+
+                {place?.phone &&(
+                    <Typography gutterBottom variant="subtitle2" color="textseccondary" className={classes.spacing}>
+                        <Phone />{place.phone}
+                    </Typography>
+                )}
             </CardContent>
         </Card>
 
